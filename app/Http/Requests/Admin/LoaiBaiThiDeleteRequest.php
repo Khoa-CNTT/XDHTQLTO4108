@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MonHocDeleteRequest extends FormRequest
+class LoaiBaiThiDeleteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,14 +22,14 @@ class MonHocDeleteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id'    => 'required|exists:mon_hocs,id',
+            'id'    => 'required|exists:loai_bai_this,id',
         ];
     }
     public function messages()
     {
         return [
-            'id.required'        =>'Không tìm thấy môn học',
-            'id.exists'          =>'Môn học không tồn tại!',
+            'id.required'        =>'Không tìm thấy loại bài thi!',
+            'id.exists'          =>'Loại bài thi không tồn tại!',
         ];
     }
 }
