@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GiangVienController;
+use App\Http\Controllers\KhoaController;
 use App\Http\Controllers\LoaiBaiThiController;
 use App\Http\Controllers\LopHocController;
 use App\Http\Controllers\MonHocController;
@@ -22,6 +23,14 @@ Route::prefix('admin')->group(function () {
         Route::post('/create', [MonHocController::class, 'store']);
         Route::post('/update', [MonHocController::class, 'update']);
         Route::post('/delete', [MonHocController::class, 'destroy']);
+    });
+    //khoa
+    Route::prefix('/khoa')->group(function () {
+        Route::get('/data', [KhoaController::class, 'getData']);
+
+        Route::post('/create', [KhoaController::class, 'store']);
+        Route::post('/update', [KhoaController::class, 'update']);
+        Route::post('/delete', [KhoaController::class, 'destroy']);
     });
 
     //SINH VIÊN
