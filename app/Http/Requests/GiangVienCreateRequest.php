@@ -25,9 +25,10 @@ class GiangVienCreateRequest extends FormRequest
             'ho_va_ten'         => 'required|min:3',
             'can_cuoc'          => 'required|numeric|digits:12|unique:giang_viens,can_cuoc,' . $this->id,
             'email'             => 'required|email|unique:giang_viens,email,' . $this->id,
+            'ma_giang_vien'      => 'required|unique:giang_viens,ma_giang_vien,' . $this->id,
             'so_dien_thoai'     => 'required|numeric|digits:10',
             'thong_tin_chung'   => 'required',
-            'trang_thai'        => 'required|boolean',
+
         ];
     }
     public function messages()
@@ -45,14 +46,16 @@ class GiangVienCreateRequest extends FormRequest
             'email.email'               => 'Email không đúng định dạng!',
             'email.unique'              => 'Email đã tồn tại trong hệ thống!',
 
+            'ma_giang_vien.required'     => 'Mã giảng viên không được để trống!',
+            'ma_giang_vien.unique'       => 'Mã giảng viên đã tồn tại trong hệ thống!',
+
             'so_dien_thoai.required'    => 'Số điện thoại không được để trống!',
             'so_dien_thoai.numeric'     => 'Số điện thoại phải là số!',
             'so_dien_thoai.digits'      => 'Số điện thoại phải đủ 10 số!',
 
             'thong_tin_chung.required'  => 'Thông tin chung không được để trống!',
 
-            'trang_thai.required'       => 'Trạng thái không được để trống!',
-            'trang_thai.boolean'        => 'Trạng thái không hợp lệ!',
+
         ];
     }
 }
