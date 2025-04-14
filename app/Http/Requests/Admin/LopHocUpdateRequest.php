@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MonHocDeleteRequest extends FormRequest
+class LopHocUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,7 @@ class MonHocDeleteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id'    => 'required|exists:mon_hocs,id',
-        ];
-    }
-    public function messages()
-    {
-        return [
-            'id.required'        =>'Không tìm thấy môn học!',
-            'id.exists'          =>'Môn học không tồn tại!',
+            //
         ];
     }
 }
