@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GiangVienCreateRequest extends FormRequest
+class SinhVienDeleteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,15 @@ class GiangVienCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id'    => 'required|exists:sinh_viens,id',
         ];
     }
+    public function messages()
+    {
+        return [
+            'id.required'   => 'Không tìm thấy sinh viên!',
+            'id.exists'     => 'Sinh viên không tồn tại!',
+        ];
+    }
+
 }

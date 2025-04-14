@@ -22,7 +22,14 @@ class GiangVienDeleteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id'    => 'required|exists:giang_viens,id',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'id.required'   => 'Không tìm thấy giảng viên!',
+            'id.exists'     => 'Giảng viên không tồn tại!',
         ];
     }
 }

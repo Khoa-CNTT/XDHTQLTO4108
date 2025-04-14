@@ -22,7 +22,14 @@ class LopHocDeleteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id'    => 'required|exists:lop_hocs,id',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'id.required'   => 'Không tìm thấy lớp học!',
+            'id.exists'     => 'Lớp học không tồn tại!',
         ];
     }
 }

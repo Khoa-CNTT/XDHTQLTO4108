@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SinhVienCreateRequest extends FormRequest
+class SinhVienUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,6 +22,7 @@ class SinhVienCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id'                => 'required|exists:sinh_viens,id',
             'ho_va_ten'         => 'required|min:3',
             'can_cuoc'          => 'required|numeric|digits:12|unique:sinh_viens,can_cuoc,' . $this->id,
             'email'             => 'required|email|unique:sinh_viens,email,' . $this->id,
@@ -33,6 +34,9 @@ class SinhVienCreateRequest extends FormRequest
     public function messages()
     {
         return [
+            'id.required'               => 'Không tìm thấy sinh viên!',
+            'id.exists'                 => 'Sinh viên không tồn tại!',
+
             'ho_va_ten.required'        => 'Họ và tên không được để trống!',
             'ho_va_ten.min'             => 'Họ và tên phải từ 3 ký tự trở lên!',
 
