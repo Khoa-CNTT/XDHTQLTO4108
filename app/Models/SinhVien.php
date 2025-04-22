@@ -17,5 +17,6 @@ class SinhVien extends Model
         'thong_tin_chung',
         'anh_dai_dien',
         'trang_thai',
+        'khoa_id',
     ];
 }

@@ -23,12 +23,13 @@ class DatabaseSeeder extends Seeder
             ]
             );
             $this->call([
+                KhoaSeeder::class,
                 GiangVienSeeding::class,
                 SinhVienSeeding::class,
                 MonHocSeeding::class,
                 LoaiBaiThiSeeding::class,
                 LopHocSeeding::class,
-                KhoaSeeder::class,
+
 
             ]);
     }

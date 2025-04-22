@@ -8,119 +8,60 @@ use Illuminate\Support\Facades\Hash;
 
 class GiangVienSeeding extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        DB::table('giang_viens')->delete();
+        // Reset bảng giảng viên
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('giang_viens')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         DB::table('giang_viens')->insert([
             [
+                'ma_giang_vien' => 'GV0001',
                 'ho_va_ten' => 'Nguyễn Văn Bình',
-                'can_cuoc' => '011203456789', // Hòa Bình, Nam
-                'ma_giang_vien' => 'GV011',
                 'email' => 'nguyenvanbinh@example.com',
-                'password' => Hash::make('password123'),
-                'so_dien_thoai' => '0911111111',
-                'thong_tin_chung' => 'Khoa Công nghệ thông tin',
+                'password' => Hash::make('12345678'),
+                'can_cuoc' => '049203456789',
+                'so_dien_thoai' => '0945556378',
                 'anh_dai_dien' => 'https://example.com/avatar11.jpg',
+                'khoa_id' => 1, // Công nghệ thông tin
+                'thong_tin_chung' => 'Khoa Công nghệ thông tin',
                 'trang_thai' => 1,
             ],
             [
+                'ma_giang_vien' => 'GV0002',
                 'ho_va_ten' => 'Trần Thị Hoa',
-                'can_cuoc' => '012302345678', // Thái Nguyên, Nữ
-                'ma_giang_vien' => 'GV012',
                 'email' => 'tranthihoa@example.com',
-                'password' => Hash::make('password123'),
-                'so_dien_thoai' => '0922222222',
-                'thong_tin_chung' => 'Khoa Kinh tế',
+                'password' => Hash::make('12345678'),
+                'can_cuoc' => '023203456789',
+                'so_dien_thoai' => '0367923456',
                 'anh_dai_dien' => 'https://example.com/avatar12.jpg',
+                'khoa_id' => 3, // Kinh tế
+                'thong_tin_chung' => 'Khoa Kinh tế',
                 'trang_thai' => 1,
             ],
             [
+                'ma_giang_vien' => 'GV0003',
                 'ho_va_ten' => 'Lê Văn Hùng',
-                'can_cuoc' => '013203456789', // Lạng Sơn, Nam
-                'ma_giang_vien' => 'GV013',
                 'email' => 'levanhung@example.com',
-                'password' => Hash::make('password123'),
-                'so_dien_thoai' => '0933333333',
-                'thong_tin_chung' => 'Khoa Kỹ thuật cơ khí',
+                'password' => Hash::make('12345678'),
+                'can_cuoc' => '022203456789',
+                'so_dien_thoai' => '0753669345',
                 'anh_dai_dien' => 'https://example.com/avatar13.jpg',
+                'khoa_id' => 4, // Ngoại ngữ
+                'thong_tin_chung' => 'Khoa Ngoại ngữ',
                 'trang_thai' => 1,
             ],
             [
+                'ma_giang_vien' => 'GV0004',
                 'ho_va_ten' => 'Phạm Thị Lan',
-                'can_cuoc' => '014302345678', // Quảng Ninh, Nữ
-                'ma_giang_vien' => 'GV014',
                 'email' => 'phamthilan@example.com',
-                'password' => Hash::make('password123'),
-                'so_dien_thoai' => '0944444444',
-                'thong_tin_chung' => 'Khoa Y dược',
+                'password' => Hash::make('12345678'),
+                'can_cuoc' => '033203456789',
+                'so_dien_thoai' => '0374965890',
                 'anh_dai_dien' => 'https://example.com/avatar14.jpg',
-                'trang_thai' => 1,
-            ],
-            [
-                'ho_va_ten' => 'Hoàng Văn Minh',
-                'can_cuoc' => '015203456789', // Bắc Giang, Nam
-                'ma_giang_vien' => 'GV015',
-                'email' => 'hoangvanminh@example.com',
-                'password' => Hash::make('password123'),
-                'so_dien_thoai' => '0955555555',
-                'thong_tin_chung' => 'Khoa Quản trị kinh doanh',
-                'anh_dai_dien' => 'https://example.com/avatar15.jpg',
-                'trang_thai' => 1,
-            ],
-            [
-                'ho_va_ten' => 'Vũ Thị Ngọc',
-                'can_cuoc' => '016302345678', // Hải Dương, Nữ
-                'ma_giang_vien' => 'GV016',
-                'email' => 'vuthingoc@example.com',
-                'password' => Hash::make('password123'),
-                'so_dien_thoai' => '0966666666',
-                'thong_tin_chung' => 'Khoa Sư phạm',
-                'anh_dai_dien' => 'https://example.com/avatar16.jpg',
-                'trang_thai' => 1,
-            ],
-            [
-                'ho_va_ten' => 'Đặng Văn Phúc',
-                'can_cuoc' => '017203456789', // Hải Phòng, Nam
-                'ma_giang_vien' => 'GV017',
-                'email' => 'dangvanphuc@example.com',
-                'password' => Hash::make('password123'),
-                'so_dien_thoai' => '0977777777',
-                'thong_tin_chung' => 'Khoa Luật',
-                'anh_dai_dien' => 'https://example.com/avatar17.jpg',
-                'trang_thai' => 1,
-            ],
-            [
-                'ho_va_ten' => 'Phan Thị Quỳnh',
-                'can_cuoc' => '018302345678', // Hưng Yên, Nữ
-                'ma_giang_vien' => 'GV018',
-                'email' => 'phanthiquynh@example.com',
-                'password' => Hash::make('password123'),
-                'so_dien_thoai' => '0988888888',
-                'thong_tin_chung' => 'Khoa Báo chí',
-                'anh_dai_dien' => 'https://example.com/avatar18.jpg',
-                'trang_thai' => 1,
-            ],
-            [
-                'ho_va_ten' => 'Nguyễn Thị Thanh',
-                'can_cuoc' => '019302345678', // Thái Bình, Nữ
-                'ma_giang_vien' => 'GV019',
-                'email' => 'nguyenthithanh@example.com',
-                'password' => Hash::make('password123'),
-                'so_dien_thoai' => '0999999999',
-                'thong_tin_chung' => 'Khoa Công nghệ sinh học',
-                'anh_dai_dien' => 'https://example.com/avatar19.jpg',
-                'trang_thai' => 1,
-            ],
-            [
-                'ho_va_ten' => 'Trần Văn Tùng',
-                'can_cuoc' => '020203456789', // Nam Định, Nam
-                'ma_giang_vien' => 'GV020',
-                'email' => 'tranvantung@example.com',
-                'password' => Hash::make('password123'),
-                'so_dien_thoai' => '0900000000',
-                'thong_tin_chung' => 'Khoa Kỹ thuật điện',
-                'anh_dai_dien' => 'https://example.com/avatar20.jpg',
+                'khoa_id' => 5, // Điện - Điện tử
+                'thong_tin_chung' => 'Khoa Điện - Điện tử',
                 'trang_thai' => 1,
             ],
         ]);

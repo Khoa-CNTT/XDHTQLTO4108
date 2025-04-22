@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\LoaiBaiThiCreateRequest as AdminLoaiBaiThiCreateRequest;
+use App\Http\Requests\Admin\LoaiBaiThiDeleteRequest as AdminLoaiBaiThiDeleteRequest;
+use App\Http\Requests\Admin\LoaiBaiThiUpdateRequest as AdminLoaiBaiThiUpdateRequest;
 use App\Http\Requests\LoaiBaiThiCreateRequest;
 use App\Http\Requests\LoaiBaiThiDeleteRequest;
 use App\Http\Requests\LoaiBaiThiUpdateRequest;
@@ -16,7 +19,7 @@ class LoaiBaiThiController extends Controller
             'loaibaithi'    => $loaiBaiThi
         ]);
     }
-    public function store(LoaiBaiThiCreateRequest $request){
+    public function store(AdminLoaiBaiThiCreateRequest $request){
         LoaiBaiThi::create([
             'ten_loai_bai_thi'  => $request->ten_loai_bai_thi,
             'trang_thai'        => $request->trang_thai,
@@ -26,7 +29,7 @@ class LoaiBaiThiController extends Controller
             'message'   => 'Thêm mới môn <strong>' . $request->ten_loai_bai_thi . '</strong> thành công!'
         ]);
     }
-    public function update(LoaiBaiThiUpdateRequest $request){
+    public function update(AdminLoaiBaiThiUpdateRequest $request){
         LoaiBaiThi::where('id', $request->id)->update([
             'ten_loai_bai_thi'  => $request->ten_loai_bai_thi,
             'trang_thai'        => $request->trang_thai,
@@ -36,7 +39,7 @@ class LoaiBaiThiController extends Controller
             'message'   => 'Cập nhật môn <strong>' . $request->ten_loai_bai_thi . '</strong> thành công!'
         ]);
     }
-    public function destroy(LoaiBaiThiDeleteRequest $request){
+    public function destroy(AdminLoaiBaiThiDeleteRequest $request){
         LoaiBaiThi::where('id', $request->id)->delete();
         return response()->json([
             'status'    => true,

@@ -2,7 +2,10 @@
 
  namespace App\Http\Controllers;
 
- use App\Http\Requests\KhoaCreateRequest;
+use App\Http\Requests\Admin\KhoaCreateRequest as AdminKhoaCreateRequest;
+use App\Http\Requests\Admin\KhoaDeleteRequest as AdminKhoaDeleteRequest;
+use App\Http\Requests\Admin\KhoaUpdateRequest as AdminKhoaUpdateRequest;
+use App\Http\Requests\KhoaCreateRequest;
  use App\Http\Requests\KhoaDeleteRequest;
  use App\Http\Requests\KhoaUpdateRequest;
  use App\Models\Khoa;
@@ -17,7 +20,7 @@
              'data'    => $khoa
          ]);
      }
-     public function store(KhoaCreateRequest $request)
+     public function store(AdminKhoaCreateRequest $request)
      {
          Khoa::create([
              'ten_khoa'  => $request->ten_khoa,
@@ -30,7 +33,7 @@
              'message'   => 'Thêm mới tên khoa <strong>' . $request->ten_khoa . '</strong> thành công!'
          ]);
      }
-     public function update(KhoaUpdateRequest $request)
+     public function update(AdminKhoaUpdateRequest $request)
      {
          Khoa::where('id', $request->id)->update([
              'ten_khoa'  => $request->ten_khoa,
@@ -43,7 +46,7 @@
              'message'   => 'Cập nhật tên khoa <strong>' . $request->ten_khoa . '</strong> thành công!'
          ]);
      }
-     public function destroy(KhoaDeleteRequest $request)
+     public function destroy(AdminKhoaDeleteRequest $request)
      {
          Khoa::where('id', $request->id)->delete();
          return response()->json([
