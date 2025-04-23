@@ -18,7 +18,7 @@ class SinhVienSeeding extends Seeder
                 'can_cuoc' => '049234567893',
                 'ma_sinh_vien' => 'SV0001',
                 'email' => 'nguyenvana@example.com',
-                'password' => Hash::make('88888888'),
+                'password' => '88888888',
                 'so_dien_thoai' => '0976987635',
                 'thong_tin_chung' => 'Ngành Công nghệ thông tin',
                 'anh_dai_dien' => 'https://mighty.tools/mockmind-api/content/human/112.jpg',

@@ -19,7 +19,7 @@ class AdminSeeding extends Seeder
         DB::table('admins')->insert([
             [
                 'username' => 'admin1',
-                'password' => Hash::make('123456'),
+                'password' => '123456',
                 'email' => 'admin1@example.com',
                 'phone' => '0123456789',
                 'trang_thai' => 1,
@@ -28,7 +28,7 @@ class AdminSeeding extends Seeder
             ],
             [
                 'username' => 'admin2',
-                'password' => Hash::make('123456'),
+                'password' => '123456',
                 'email' => 'admin2@example.com',
                 'phone' => '0987654321',
                 'trang_thai' => 1,
