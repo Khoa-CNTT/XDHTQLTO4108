@@ -7,9 +7,11 @@ use App\Http\Requests\Admin\SinhVienDeleteRequest as AdminSinhVienDeleteRequest;
 use App\Http\Requests\Admin\SinhVienUpdateRequest as AdminSinhVienUpdateRequest;
 use App\Http\Requests\SinhVienCreateRequest;
 use App\Http\Requests\SinhVienDeleteRequest;
+use App\Http\Requests\SinhVienLoginRequest;
 use App\Http\Requests\SinhVienUpdateRequest;
 use App\Models\SinhVien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SinhVienController extends Controller
@@ -113,5 +115,34 @@ class SinhVienController extends Controller
         return response()->json([
             'data' => $data
         ]);
+    }
+    public function login(SinhVienLoginRequest $request)
+    {
+        $sinhvien = SinhVien::where('email', $request->email)
+            ->where('password', Hash::make($request->password))
+            ->first();
+
+        if ($sinhvien) {
+            return response()->json([
+                'status'  => 1,
+                'message' => 'Đăng nhập thành công',
+                'key'     => $sinhvien->createToken('key_sinhvien')->plainTextToken,
+            ]);
+        } else {
+            return response()->json([
+                'status'  => 0,
+                'message' => 'Tài khoản hoặc mật khẩu không đúng'
+            ]);
+        }
+    }
+    public function checkLogin()
+    {
+        $user = Auth::guard('sanctum')->user();
+
+        if($user && $user instanceof \App\Models\SinhVien )  {
+            return response()->json([
+                'status' => 1,
+            ]);
+        }
     }
 }
