@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminLoginRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
 
-    public function login(Request $request)
+    public function login(AdminLoginRequest $request)
     {
         // Dựa vào $request->email và $request->password
         $user = Admin::where('email', $request->email)
@@ -30,7 +32,7 @@ class AdminController extends Controller
         }
     }
 
-    public function checklogin(Request $request)
+    public function checklogin()
     {
         $user = Auth::guard('sanctum')->user();
 

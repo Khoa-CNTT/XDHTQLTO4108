@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
-    Route::get('/login', [AdminController::class, 'login']);
+    Route::post('/login', [AdminController::class, 'login']);
     Route::get('/checklogin', [AdminController::class, 'checkLogin']);
     //MÔN HỌC
     Route::prefix('/mon-hoc')->group(function () {
@@ -111,5 +111,10 @@ Route::prefix('giang-vien')->group(function () {
         Route::post('/search',      [LopHocController::class, 'search']);
         Route::post('/change-status', [LopHocController::class, 'changeStatus']);
     });
+});
+//Sinh viên
+Route::prefix('sinh-vien')->group(function () {
+    Route::post('/login', [SinhVienController::class, 'login']);
+    Route::get('/checklogin', [SinhVienController::class, 'checkLogin']);
 });
 
