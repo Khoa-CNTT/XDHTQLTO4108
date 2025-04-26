@@ -35,6 +35,7 @@ class SinhVienUpdateRequest extends FormRequest
             ],
             'thong_tin_chung'   => 'required',
             'trang_thai'        => 'required|boolean',
+            'anh_dai_dien' =>'nullable',
 
         ];
     }

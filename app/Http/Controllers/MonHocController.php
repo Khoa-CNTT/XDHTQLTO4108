@@ -13,21 +13,23 @@ use Illuminate\Http\Request;
 
 class MonHocController extends Controller
 {
-    public function getData(){
+    public function getData()
+    {
         $monHoc = MonHoc::get();
         return response()->json([
             'monhoc' => $monHoc
         ]);
     }
     public function getDataOpen()
-{
-    $monHoc = MonHoc::where('trang_thai', 1)->get();
+    {
+        $monHoc = MonHoc::where('trang_thai', 1)->get();
 
-    return response()->json([
-        'monhoc' => $monHoc
-    ]);
-}
-    public function store(AdminMonHocCreateRequest $request){
+        return response()->json([
+            'monhoc' => $monHoc
+        ]);
+    }
+    public function store(AdminMonHocCreateRequest $request)
+    {
         MonHoc::create([
             'ten_mon_hoc'   => $request->ten_mon_hoc,
             'ma_mon_hoc'    => $request->ma_mon_hoc,
@@ -40,7 +42,8 @@ class MonHocController extends Controller
             'message'   => 'Thêm mới môn <strong>' . $request->ten_mon_hoc . '</strong> thành công!'
         ]);
     }
-    public function update(AdminMonHocUpdateRequest $request){
+    public function update(AdminMonHocUpdateRequest $request)
+    {
         MonHoc::where('id', $request->id)->update([
             'ten_mon_hoc'   => $request->ten_mon_hoc,
             'ma_mon_hoc'    => $request->ma_mon_hoc,
@@ -53,7 +56,8 @@ class MonHocController extends Controller
             'message'   => 'Cập nhật môn <strong>' . $request->ten_mon_hoc . '</strong> thành công!'
         ]);
     }
-    public function destroy(AdminMonHocDeleteRequest $request){
+    public function destroy(AdminMonHocDeleteRequest $request)
+    {
         MonHoc::where('id', $request->id)->delete();
         return response()->json([
             'status'    => true,
@@ -70,10 +74,9 @@ class MonHocController extends Controller
         return response()->json([
             'monhoc' => $monHoc
         ]);
-
-
     }
-    public function changeStatus(Request $request){
+    public function changeStatus(Request $request)
+    {
         $status = MonHoc::where('id', $request->id)->first();
 
         if ($status->trang_thai == 1) {

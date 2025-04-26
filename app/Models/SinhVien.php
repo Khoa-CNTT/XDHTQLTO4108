@@ -21,5 +21,6 @@ class SinhVien extends Authenticatable
         'anh_dai_dien',
         'trang_thai',
         'khoa_id',
+        'hash_reset',
     ];
 }

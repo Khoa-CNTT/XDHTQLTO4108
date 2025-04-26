@@ -34,6 +34,7 @@ class GiangVienCreateRequest extends FormRequest
             'khoa_id'          => 'required|exists:khoas,id',
             // 'anh_dai_dien'      => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Tối đa 2MB
             'trang_thai'        => 'required|boolean',
+            'anh_dai_dien' =>'nullable'
         ];
     }
 

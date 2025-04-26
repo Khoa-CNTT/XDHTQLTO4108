@@ -68,6 +68,7 @@ class SinhVienController extends Controller
             'thong_tin_chung'   => $request->thong_tin_chung,
             'trang_thai' => $request->trang_thai,
             'khoa_id' => $request->khoa_id,
+            'anh_dai_dien' =>$request->anh_dai_dien,
         ]);
         return response()->json([
             'status'    => true,

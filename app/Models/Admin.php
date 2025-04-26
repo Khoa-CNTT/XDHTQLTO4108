@@ -21,6 +21,7 @@ class Admin extends Authenticatable
         'phone',
         'trang_thai',
         'is_admin',
-        'id_chuc_vu'
+        'id_chuc_vu',
+        'hash_reset',
     ];
 }

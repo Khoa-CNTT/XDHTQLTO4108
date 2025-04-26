@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('trang_thai')->default(1);
             $table->integer('is_admin')->default(0);
             $table->integer('id_chuc_vu')->default(0);
+            $table->string('hash_reset')->nullable();
             $table->timestamps();
         });
     }

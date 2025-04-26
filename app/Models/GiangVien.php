@@ -18,5 +18,6 @@ class GiangVien extends Model
         'anh_dai_dien',
         'trang_thai',
         'khoa_id',
+        'hash_reset',
     ];
 }

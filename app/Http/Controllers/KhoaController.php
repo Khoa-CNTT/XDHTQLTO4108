@@ -54,4 +54,18 @@ use App\Http\Requests\KhoaCreateRequest;
              'message'   => 'Đã xóa tên khoa <strong>' . $request->ten_khoa . '</strong> thành công!'
          ]);
      }
+     public function changeStatus(Request $request){
+        $status = Khoa::where('id', $request->id)->first();
+
+        if ($status->trang_thai == 1) {
+            $status->trang_thai = 0;
+        } else {
+            $status->trang_thai = 1;
+        }
+        $status->save();
+        return response()->json([
+            'status'    =>  true,
+            'message'   =>  'Bạn đã cập nhật trạng thái Khoa ' . $request->ten_khoa . ' thành công'
+        ]);
+    }
  }

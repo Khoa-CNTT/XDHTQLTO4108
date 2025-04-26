@@ -33,6 +33,7 @@ class SinhVienCreateRequest extends FormRequest
                 'unique:sinh_viens,so_dien_thoai,' . $this->id,
             ],
             'thong_tin_chung'   => 'required',
+            'anh_dai_dien' =>'nullable',
         ];
     }
     public function messages()

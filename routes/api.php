@@ -15,11 +15,18 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
 // })->middleware('auth:sanctum');
+
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
     Route::post('/login', [AdminController::class, 'login']);
     Route::get('/checklogin', [AdminController::class, 'checkLogin']);
+    Route::post('/logout', [AdminController::class, 'logOut']);
+    Route::post('/quen-mat-khau', [AdminController::class, 'resultPassword']);
+    Route::post('/doi-mat-khau', [AdminController::class, 'changePassword']);
+
+    // Route::get('/admin/user-profile', [AdminController::class, 'show']);
     //MÔN HỌC
+
     Route::prefix('/mon-hoc')->group(function () {
         Route::get('/data', [MonHocController::class, 'getData']);
 
@@ -36,6 +43,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/create', [KhoaController::class, 'store']);
         Route::post('/update', [KhoaController::class, 'update']);
         Route::post('/delete', [KhoaController::class, 'destroy']);
+        Route::post('/change-status', [KhoaController::class, 'changeStatus']);
     });
 
     //SINH VIÊN
@@ -54,13 +62,13 @@ Route::prefix('admin')->group(function () {
 
     // GIẢNG VIÊN
     Route::prefix('/giang-vien')->group(function () {
-        Route::get('/data',       [GiangVienController::class, 'getData'])->middleware('AdminMiddle');
+        Route::get('/data',       [GiangVienController::class, 'getData']);
         // Thêm route GET này để lấy giảng viên đang active (tinh_trang = 1)
-        Route::post('/create',     [GiangVienController::class, 'store'])->middleware('AdminMiddle');
-        Route::post('/update',     [GiangVienController::class, 'update'])->middleware('AdminMiddle');
-        Route::post('/delete',     [GiangVienController::class, 'destroy'])->middleware('AdminMiddle');
-        Route::post('/search',     [GiangVienController::class, 'search'])->middleware('AdminMiddle');
-        Route::post('/change-status', [GiangVienController::class, 'changeStatus'])->middleware('AdminMiddle');
+        Route::post('/create',     [GiangVienController::class, 'store']);
+        Route::post('/update',     [GiangVienController::class, 'update']);
+        Route::post('/delete',     [GiangVienController::class, 'destroy']);
+        Route::post('/search',     [GiangVienController::class, 'search']);
+        Route::post('/change-status', [GiangVienController::class, 'changeStatus']);
     });
 
     // LỚP HỌC
@@ -72,6 +80,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/search',      [LopHocController::class, 'search']);
         Route::post('/change-status', [LopHocController::class, 'changeStatus']);
         Route::get('/data-open',    [LopHocController::class, 'getDataOpen']);
+        Route::get('/data-open-giang-vien', [LopHocController::class, 'getDataOpenGiangVien']);
+
     });
 
 
@@ -89,7 +99,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/data', [BaiThiController::class, 'getData']);
 
         Route::post('/create', [BaiThiController::class, 'store']);
-
     });
 
     //LOẠI BÀI THI
@@ -117,4 +126,3 @@ Route::prefix('sinh-vien')->group(function () {
     Route::post('/login', [SinhVienController::class, 'login']);
     Route::get('/checklogin', [SinhVienController::class, 'checkLogin']);
 });
-

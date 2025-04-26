@@ -114,4 +114,12 @@ class LopHocController extends Controller
             'message'   =>  'Bạn đã cập nhật trạng thái lớp học ' . $request->ten_lop . ' thành công'
         ]);
     }
+    public function getDataOpenGiangVien()
+    {
+        $giangvien = GiangVien::where('trang_thai', 1)->get();
+
+        return response()->json([
+            'giangvien' => $giangvien
+        ]);
+    }
 }

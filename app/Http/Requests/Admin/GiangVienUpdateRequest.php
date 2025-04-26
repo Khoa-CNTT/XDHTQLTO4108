@@ -32,6 +32,7 @@ class GiangVienUpdateRequest extends FormRequest
             'ma_giang_vien' => 'required|regex:/^GV\d{4}$/|unique:giang_viens,ma_giang_vien,' . $this->id,  // Quy tắc regex cho mã giảng viên
             'khoa_id'          => 'required|exists:khoas,id',
             // 'anh_dai_dien'      => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Tối đa 2MB
+                'anh_dai_dien' =>'nullable'
         ];
     }
     public function messages()
